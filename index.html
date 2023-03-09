@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta charset="UTF-8">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <title>Registro de Requerimiento Clientes</title>
+</head>
+
+<body style="overflow-x: hidden;">
+  <form id="formulario">
+  <!--Fila de Tipo cliente-->
+  <div class="row">
+    <div class="col-md-4 offset-md-1">
+        <label for="t_cliente" class="control-label">Tipo de Cliente</label>
+        <select id="t_cliente" name="t_cliente" class="form-control">
+          <option disabled selected>Selecciona una opción</option>
+        </select>
+    </div>
+  </div>
+  
+    <!--Fila Nombres y Apellidos-->
+    <div class="row ">
+      <div class="col-md-8 offset-md-1">
+        <label for="nombre" class="control-label">Nombres</label>
+        <input id="nombre" class="form-control" type="text" placeholder="Ingrese su nombre" requerid>
+        
+      </div>
+    </div>
+
+    <!--fila Correo electronico-->
+    
+    <div class="row ">
+      <div class="col-md-8 offset-md-1">
+          <div class= "form-group">
+            <label for="correo">Correo Electrónico</label>
+            <input id="correo" class="form-control" type="text" placeholder="Ingrese su correo electronico">
+          </div>
+      </div>
+    </div>
+
+    <!--Fila Tipo y numero de Identificacion y Telefono-->
+
+    <div class="row ">
+      
+    </div>
+
+    <!-- Fila Estado y municipio-->
+
+    <div class="row ">
+      <div class="col-md-2 offset-md-1">
+        <label for="estado" class="control-label">Estado</label>
+        <select id="estado" name="estado" class="form-control">
+          <option disabled selected>Selecciona una opción</option>
+        </select>
+      </div>
+      <div class="col-md-3 offset-md">
+        <label for="municipio" class="control-label">Municipio</label>
+        <input id="municipio" name="municipio" class="form-control" type="text" placeholder="Ingrese su municipio">
+      </div>
+      <div class="col-md-3 offset-md">
+        <label for="telefono" class="control-label">Telefono de contacto</label>
+        <input id="telefono" name="telefono" class="form-control" type="text" placeholder="Ingrese su numero de telefono">
+      </div>
+    </div>
+
+    <!-- Fila Direccion-->
+
+    <div class="row ">
+      <div class="col-md-8 offset-md-1">
+        <label for="direccion" class="control-label">Dirección</label>
+        <input id="direccion" name="direccion" class="form-control" type="text" placeholder="Ingrese su direccion">
+      </div>
+    </div>
+
+    <!-- Fila tipo de requerimiento  -->
+
+    <div class="row">
+      <div class="col-md-4 offset-md-1">
+        <label for="requerimiento" class="control-label">Categoria de Requerimiento</label>
+        <select id="categoria_requerimiento" name="requerimiento" class="form-control" onchange="ticketOnchange(this)">
+          <option disabled selected>Selecciona una opción</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Se muestra el siguiente div si selecciona la opcion reclamo producto no conforme -->
+        <div id="seccion_garantia" style="display:none;">
+          <div class="row">
+            <div class="col-md-4 offset-md-1">
+              <label for="producto" class="control-label">Producto que genera el reclamo</label>
+              <select id="Equipos" name="producto" class="form-control"  onchange="equipoOnchange(this)">
+                <option disabled selected>Selecciona una opción</option>
+              </select>
+            </div>
+            <div class="col-md-4 offset-md">
+              <label for="fecha" class="control-label">Fecha de Compra</label>
+              <input style="font-size: smaller" name="fecha_compra" id="fecha_compra" class="form-control" type="date"  placeholder="AA/MM/DD">
+            </div>
+          </div>
+
+          <div id="serialEquipo" class="row">
+            <div class="col-md-4 offset-md-1">
+              <label for="serial" class="control-label">Numero serial del equipo</label>
+              <input id="serial" name="serial" class="form-control" type="text" placeholder="Ingrese el serial de su equipo">
+            </div>
+            <div class="col-md-4" style="padding-top: 29px;">
+              <div class="custom-file">
+                <input type="file" name="archivo" class="custom-file-input" id="customFile" onchange="saveFileFactura(this)">
+                <label class="custom-file-label" for="customFile">Selecciona Archivo de Factura</label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row ">
+            <div class="col-md-8 offset-md-1">
+              <label for="archivo" class="control-label">Seleccione Archivo</label>
+              <small id="HelpArchivo" class="form-text text-muted">Le agradecemos cargar una foto o vídeo en donde podamos evidenciar el problema reportado</small>
+            </div>
+          </div>
+      
+          <div class="row ">
+            <div class="col-md-8 offset-md-1">
+              <div class="custom-file">
+                <input type="file" name="archivo" class="custom-file-input" id="customFile" onchange="saveFile(this)">
+                <label class="custom-file-label" for="customFile">Selecciona Archivo No.1</label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row ">
+            <div class="col-md-8 offset-md-1">
+              <div class="custom-file">
+                <input type="file" name="archivo" class="custom-file-input" id="customFile" onchange="saveFile(this)">
+                <label class="custom-file-label" for="customFile">Selecciona Archivo No.2</label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row ">
+            <div class="col-md-8 offset-md-1">
+              <div class="custom-file">
+                <input type="file" name="archivo" class="custom-file-input" id="customFile" onchange="saveFile(this)">
+                <label class="custom-file-label" for="customFile">Selecciona Archivo No.3</label>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+    <!-- Fila detalle requerimiento  -->
+
+      <div class="row">
+        <div class="col-sm-8 offset-md-1">
+          <label for="detalle_requerimiento" class="control-label">Escriba el detalle de su requerimiento</label>
+          <!--input id="direccion" class="form-control" type="text" placeholder="Ingrese su direccion"--><br>
+          <textarea style="font-size: smaller" class="form-control" name="detalle_requerimiento" id="detalle_requerimiento" cols="50" rows="5"></textarea>
+        </div>
+      </div>
+
+    <!-- Fila verificación de política.  -->
+
+    <div class="row">
+        <div class="col-sm-8 offset-md-1">
+          <div class="form-check">
+            <input id="politica" type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">He leido y acepto la 
+                <a href="#" role="button" data-toggle="modal" data-target="#exampleModalLong">Política de Protección de Datos</a>
+              </label>
+          </div>
+        </div>
+    </div>
+
+    <!-- Fila Boton enviar -->
+
+    <div class="row">
+      <div class="col-md-8 offset-md-1">
+        <input style="margin-top: 3px; font-size: smaller;" id="boton" type="submit" class="btn btn-lg btn-success" data-toggle="modal" data-target="#exampleModal" value="Enviar Solicitud">
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" id="headermensaje">
+            <h5 class="modal-title" id="titulomensaje">Realizado</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div id="mensaje" class="modal-body">
+            
+          </div>
+          <div class="modal-footer">
+            <button type="sumbit" class="btn btn-success" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade bd-example-modal-lg" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">POLÍTICA PROTECCIÓN DE DATOS</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>1. ALCANCE</p>
+            <p>Aplica para los datos personales que se soliciten a los socios del negocio (clientes, proveedores, empleados, asociados) de Progen S.A. Contiene las políticas de acuerdo a las normas de referencia así como el procedimiento  para solicitud de información, actualización, supresión de datos o cualquier otro requerimiento que tenga el Titular relacionado con la información que tenga en Progen.</p>
+            <p>2. NORMA DE REFERENCIA</p>
+            <p>MARCO DE REFERENCIA LEY 1581 DE 2012<br>
+               Constitución Política, artículo 15.<br>
+               Ley 1266 de 2008<br>
+               Ley 1581 de 2012<br>
+               Decretos Reglamentarios 1727 de 2009 y 2952 de 2010, y Decreto Reglamentario parcial No 1377 de 2013 Sentencias de la Corte Constitucional C – 1011 de 2008, y C - 748 del 2011.</p>
+            <p>3. DEFINICIONES de acuerdo con el Decreto 1377 de 2013</p>
+            <p>Autorización: Consentimiento previo, expreso e informado del titular para llevar a cabo el Tratamiento de datos personales.<br>
+              Base de datos: Conjunto organizado de datos personales que sea objeto de Tratamiento.<br>
+              Dato personal: Cualquier información vinculada o que pueda asociarse a una o varias personas naturales determinadas o determinables.<br>
+              Encargado del tratamiento: Persona natural o jurídica, pública o privada, que por sí misma o en asocio con otros, realice el tratamiento de datos personales por cuenta del responsable del tratamiento.<br>
+              Responsable del tratamiento: Persona natural o jurídica, pública o privada, que por sí misma o en asocio con otros, decida sobre la base de datos y/o el tratamiento de los datos.<br>
+              Titular: Persona natural cuyos datos personales sean objeto de tratamiento. Tratamiento: Cualquier operación o conjunto de operaciones sobre datos personales.<br>
+              Transferencia: Tiene lugar cuando el responsable y/o encargado del tratamiento de datos personales, ubicado en Colombia, envía estos datos a un receptor, que a su vez es responsable del tratamiento y se encuentra dentro o fuera del país.<br>
+              Transmisión: Es el tratamiento de los datos personales que implica la comunicación de los mismos dentro o fuera de Colombia.<br>
+              Dato Sensible: Se entiende por datos sensibles aquellos que afectan la intimidad del titular o cuyo uso indebido puede generar su discriminación, tales como aquellos que revelen el origen racial o étnico, la orientación política, las convicciones religiosas o filosóficas, la pertenencia a sindicatos, organizaciones sociales, de derechos humanos o que promueva intereses de cualquier partido político o que garanticen los derechos y garantías de partidos políticos de oposición así como los datos relativos a la salud, a la vida sexual y los datos biométricos, entre otros, la captura de imagen fija o en movimiento, huellas digitales, fotografías, iris, reconocimiento de voz, facial o de palma de mano, etc.</p>
+            <p>4. TRATAMIENTO AL CUAL SERÁN SOMETIDOS LOS DATOS PERSONALES RECOGIDOS  POR  PROGEN S.A.</p>
+            <p>Los datos personales respecto de los cuales  Progen ostenta el carácter de responsable son incluidos en bases de datos y serán utilizados, procesados, recolectados, almacenados, usados, circulados, suprimidos, compartidos, actualizados, transmitidos, de acuerdo con los términos y condiciones de las Políticas contenidas en este documento, para las siguientes finalidades:</p>
+              <ol>
+                <li>Realizar cotizaciones de los productos que compra o vende la empresa  y hacer seguimientos a las negociaciones efectuadas.</li>
+                <li>Enviar información comercial de promociones, campañas, realizar encuestas para calificar la calidad del servicio, obtener datos estadísticos.</li>
+                <li>Respaldar obligaciones contractuales y de garantía asumidas con o por  el titular de la información.</li>
+                <li>Realizar estudios de mercado sobre hábitos de consumo.</li>
+                <li>Campañas de CRM.</li>
+                <li>Reportar a autoridades de control y vigilancia.</li>
+                <li>Usar para fines administrativos, comerciales, de publicidad ó laborales cuando se trate de empleados.</li>
+                <li>Adjudicación de compras y contratos.</li>
+                <li>Validación en  listas restrictivas para prevención del riesgo de lavado de activos y financiación del terrorismo.</li>
+              </ol>
+            <p>5. POLÍTICAS EN LA RECOLECCIÓN, MANEJO, USO TRATAMIENTO, ALMACENAMIENTO E INTERCAMBIO DE DATOS PERSONALES.</p>
+            <p>5.1. DERECHOS DE LOS TITULARES</p>
+            <p>5.1.1. LIBERTAD.<br>
+              El, uso, captura, recolección y tratamiento de datos personales sólo puede llevarse a cabo con el consentimiento, previo, expreso e informado del Titular. El titular tiene derecho a solicitar prueba de la autorización otorgada a Progen, puede revocar la autorización y/o solicitar la supresión del dato cuando en el tratamiento no se respeten los principios, derechos y garantías constitucionales y legales.  La solicitud de supresión de la información y la revocatoria de la autorización no procederán cuando el titular tenga un deber legal o contractual de permanecer en la base de datos.</p>
+            <p>5.1.2. FINALIDAD.<br>
+               El uso, captura, recolección y tratamiento de datos personales a los que tenga acceso y sean recogidos por Progen S.A, tendrán un fin  legítimo el cual  es  informado al respectivo titular de los datos personales. Ver numeral 4 de este documento.</p>
+            <p>5.1.3. VERACIDAD Y CALIDAD.<br>
+                La información sujeta a uso, captura, recolección y tratamiento de datos personales debe ser veraz, completa, exacta, actualizada, comprobable y comprensible. Se prohíbe en Progen el Tratamiento de datos parciales, incompletos, fraccionados o que induzcan a error.</p>
+            <p>5.1.4. TRANSPARENCIA.<br>
+                En el uso, captura, recolección y tratamiento de datos personales el Titular de la información tiene el derecho a: obtener de Progen, en cualquier momento y sin restricciones, información acerca de la existencia de cualquier tipo de información o dato personal que sea de su interés o titularidad, actualizar y rectificar  sus datos personales.</p>
+            <p>5.1.5. ACCESO Y CIRCULACIÓN RESTRINGIDA.<br>
+                Los datos personales, salvo la información pública, no podrán estar disponibles en Internet u otros medios de divulgación o comunicación masiva, salvo que el acceso sea técnicamente controlable para brindar un conocimiento restringido sólo a los Titulares o terceros autorizados. Con este fin Progen controlará los medios medios donde se almacena y consulta la información. El titular de la información podrá tener acceso a su información de acuerdo con el procedimiento establecido en el numeral 6 de este documento.</p>
+            <p>5.1.6. SEGURIDAD.<br>
+                Los datos personales e información usada, capturada, recolectada y sujeta a tratamiento en Progen, será objeto de protección en la medida en que los recursos técnicos y estándares mínimos así lo permitan, a través de la adopción de medidas tecnológicas de protección, protocolos, y las medidas administrativas que sean necesarias para otorgar seguridad a los registros evitando su adulteración, modificación, pérdida, y en general en contra de cualquier uso o acceso no autorizado.</p>
+            <p>5.1.7. CONFIDENCIALIDAD.<br>
+                Todas y cada una de las personas que administran, manejen, actualicen o tengan acceso a informaciones de cualquier tipo que se encuentre en Bases de Datos, se comprometen a conservar y mantener de manera estrictamente confidencial y no revelarla a terceros, todas las informaciones personales, comerciales, contables, técnicas, comerciales o de cualquier otro tipo suministradas en la ejecución y ejercicio de sus funciones. Todas las personas que trabajen actualmente o sean vinculadas a futuro para tal efecto, en la administración y manejo de bases de datos, deberán suscribir un documento adicional u otrosí a su contrato laboral o de prestación de servicios para efectos de asegurar tal compromiso. Esta obligación persiste y se mantiene inclusive después de finalizada su relación con alguna de las labores que comprende el Tratamiento.</p>
+            <p>5.2. TRATAMIENTO DE DATOS SENSIBLES.<br>
+                Progen har uso y tratamiento de los datos catalogados como sensibles cuando: a) El Titular haya dado su autorización explícita a dicho tratamiento, salvo en los casos que por ley no sea requerido el otorgamiento de dicha autorización. b) El Tratamiento sea necesario para salvaguardar el interés vital del titular y este se encuentre física o jurídicamente incapacitado. En estos eventos, los representantes legales deberán otorgar su autorización. c) El Tratamiento se refiera a datos que sean necesarios para el reconocimiento, ejercicio o defensa de un derecho en un proceso judicial. d) El Tratamiento tenga una finalidad estadística. En este evento deberán adoptarse las medidas conducentes a la supresión de identidad de los Titulares.</p>
+            <p>5.3. DEBERES DE PROGEN COMO RESPONSABLE DEL TRATAMIENTO DE DATOS PERSONALES.</p>
+            <p>5.3.1. Solicitar y conservar, copia de la respectiva autorización otorgada por el titular. Progen no    utilizará medios engañosos para recolectar y realizar tratamiento de datos personales ni los  divulgará sin previa autorización, o en ausencia de mandato legal, estatutario, o judicial que releve el consentimiento.<br>
+               5.3.2. Informar debidamente al titular sobre la finalidad de la recolección y los derechos que le asisten por virtud de la autorización otorgada.<br>
+               5.3.3. Conservar la información bajo las condiciones de seguridad necesarias para impedir su adulteración, pérdida, consulta, uso o acceso no autorizado o fraudulento.<br>
+               5.3.4. Garantizar que la información que se suministre al encargado del tratamiento sea veraz, completa, exacta, actualizada, comprobable y comprensible.<br>
+               5.3.5. Actualizar la información, comunicando de forma oportuna al encargado del tratamiento, todas las novedades respecto de los datos que previamente le haya suministrado y adoptar las demás medidas necesarias para que la información suministrada a este se mantenga actualizada.<br>
+               5.3.6. Rectificar la información cuando sea incorrecta y comunicar lo pertinente al encargado del tratamiento.<br>
+               5.3.7. Exigir al Encargado del Tratamiento en todo momento, el respeto a las condiciones de seguridad y privacidad de la información del Titular.<br>
+               5.3.8. Tramitar las consultas y reclamos formulados.</p>
+            <p>6. PROCEDIMIENTO DE ACCESO, CONSULTA, RECTIFICACIÓN Y ACTUALIZACIÓN DE LA INFORMACIÓN.</p>
+            <p>El  titular de la información  tiene derecho a acceder a sus datos personales y a los detalles del tratamiento de los mismos, así como a rectificarlos y actualizarlos  en caso de ser inexactos o  a solicitar su eliminación cuando considere que resulten ser excesivos o innecesarios para las finalidades que justificaron su  obtención u oponerse al tratamiento de los mismos para fines específicos.<br>
+                Con el fin anterior el  Titular debe presentar la solicitud respectiva en las dependencias  de Progen, en el área de Servicio al cliente, ubicada en la Carrera 3 No. 57-06  Entrada 2, Zona industrial Cazucá, Soacha Cundinamarca.</p>
+            <p>O enviarla a la dirección electrónica  gerencia.servicio@progen.com.co </p>
+            <p>Los anteriores mecanismos pueden ser utilizados por el titular o terceros facultados por ley para hacerlo en nombre suyo con la finalidad de ejercer los siguientes derechos:</p>
+            <p>6.1 DERECHO DE ACCESO.<br>
+               El  titular de la información podrá consultar de forma gratuita sus datos personales  al menos una vez cada mes calendario. Para conocer los datos personales que son objeto de tratamiento por parte de Progen,  el titular de información podrá   elevar  una  solicitud  indicando la información que desea conocer a través de cualquiera de los mecanismos arriba señalados.<br>
+               La petición será atendida en un término máximo de diez (10) días hábiles contados a partir de la fecha de recibo de la misma. Cuando no fuere posible atender la petición dentro de dicho término, este hecho se informará al solicitante, expresando los motivos de la demora y señalando la fecha en que se atenderá su consulta, la cual en ningún caso podrá superar los cinco (5) días hábiles siguientes al vencimiento del primer término.</p>
+            <p>6.2 RECLAMOS.</p>
+            <p>De conformidad con lo establecido  en el artículo 14 de la Ley 1581 de 2012,  cuando el Titular o sus causahabientes  consideren que la información contenida en una base de datos debe ser objeto de corrección, actualización o supresión, o cuando deba ser revocada por advertirse el presunto incumplimiento de cualquiera de los deberes contenidos en  la Ley 1581 de 2012, podrán presentar un reclamo en PROGEN, el cual será tramitado teniendo en cuenta lo siguiente:<br>
+               Los derechos  de rectificación, actualización o supresión o revocatoria del consentimiento únicamente se podrán ejercer por:<br>
+               a.El titular o sus causahabientes, previa acreditación de su identidad.
+            </p>
+               <ol>
+                 <li>Su representante, previa acreditación de la representación.</li>
+                 <li>Por estipulación a favor de otro o para otro.</li>
+               </ol>
+            <p>Cuando la solicitud sea formulada por persona distinta del titular y no se acredite que la misma actúa en representación de aquél,  se tendrá por no presentada.</p>
+            <p>La solicitud de rectificación, actualización, supresión o revocatoria debe ser presentada a través de los medios habilitados por PROGEN  y contener, como mínimo,  la siguiente información:</p>
+              <ol>
+                 <li>El nombre y domicilio del titular, dirección electrónica o cualquier otra donde desee recibir la respuesta.</li>
+                 <li>Los documentos que acrediten la identidad del solicitante y en caso dado, la de su representante con la respectiva autorización.</li>
+                 <li>La descripción clara y precisa de los datos personales respecto de los cuales el titular busca ejercer alguno de los derechos y la solicitud concreta.</li>
+                 <li>En caso dado otros elementos o documentos que faciliten la localización de los datos personales.</li>
+               </ol>
+            <p>El término máximo para atender el reclamo será de quince (15) días hábiles contados a partir del día siguiente a la fecha de  recibo de la solicitud. Cuando no fuere posible atender el reclamo dentro de dicho término, se informará al interesado los motivos de la demora y la fecha en que se atenderá su reclamo, la cual en ningún caso podrá superar los ocho (8) días hábiles siguientes al vencimiento del primer término.</p>
+            <p>ÁREA RESPONSABLE  DE LA ATENCIÓN DE LA PETICIONES, CONSULTAS, RECLAMOS</p>
+            <p>El área  responsable de atender las peticiones de acceso, rectificación, actualización, supresión de datos o revocatoria del consentimiento o autorización otorgada para el tratamiento de sus datos personales, es SERVICIO AL CLIENTE, ubicada en la Carrera 3 No. 57-06  Entrada 2, Zona industrial Cazucá, Soacha Cundinamarca.</p>
+            <p>La política de tratamiento de la información contenida en el presente documento entro en vigencia el 25 de diciembre  del 2014.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+  </form>
+    <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/validaciones.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

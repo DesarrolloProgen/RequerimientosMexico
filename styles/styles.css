@@ -1,0 +1,17 @@
+label{
+    margin: 2px;
+    font-size: smaller;
+}
+input::-webkit-input-placeholder {
+      font-size: smaller;
+    }
+option{
+    font-size: smaller;
+}
+select.form-control{
+    font-size: smaller;
+}
+input.form-control{
+    font-size: smaller
+}
+    
