@@ -137,7 +137,7 @@ function validaciones() {
         $(".custom-file-label").addClass("selected").html("Choose File");
         return false;
       }
-      if (equipos.value != "Accesorios" && equipos.value != "Repuestos") {
+      if (equipos.value != "Accesorios" && equipos.value != "Refacciones") {
         /* Serial del equipo */
         if (serial.value == "" || serial.value == null) {
           document.getElementById("headermensaje").style.background = "#ff3c37";
