@@ -14,4 +14,12 @@ select.form-control{
 input.form-control{
     font-size: smaller
 }
-    
+
+.helpCategoria {
+    background-color: yellow;
+    border:solid;
+    margin-top: 15px;    
+}
+.helpCategoria span {
+    font-weight: bolder;
+}

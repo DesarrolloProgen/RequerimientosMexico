@@ -87,6 +87,10 @@
           <option disabled selected>Selecciona una opción</option>
         </select>
       </div>
+      <div class="col-md-4 helpCategoria" style="display: none;">
+        <small id="helpCategoria" class="text-muted">
+        </small>
+      </div>
     </div>
 
     <!-- Se muestra el siguiente div si selecciona la opcion reclamo producto no conforme -->
@@ -109,17 +113,14 @@
               <label for="serial" class="control-label">Numero serial del equipo</label>
               <input id="serial" name="serial" class="form-control" type="text" placeholder="Ingrese el serial de su equipo">
             </div>
-            <div class="col-md-4" style="padding-top: 29px;">
-              <div class="custom-file">
-                <input type="file" name="archivo" class="custom-file-input" id="customFile" onchange="saveFileFactura(this)">
-                <label class="custom-file-label" for="customFile">Selecciona Archivo de Factura</label>
-              </div>
+            <div class="col-md-4 ">
+              <label for="punto_venta" class="control-label">Nombre Almacén o Punto de Venta donde Adquirió el Equipo</label>
+              <input id="punto_venta" name="punto_venta" class="form-control" type="text" placeholder="Ingrese el nombre del almacén/punto de venta donde adquirió el equipo ">
             </div>
           </div>
           
           <div class="row ">
             <div class="col-md-8 offset-md-1">
-              <label for="archivo" class="control-label">Seleccione Archivo</label>
               <small id="HelpArchivo" class="form-text text-muted">Le agradecemos cargar una foto o vídeo en donde podamos evidenciar el problema reportado</small>
             </div>
           </div>

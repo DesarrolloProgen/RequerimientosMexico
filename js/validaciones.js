@@ -17,6 +17,8 @@ const telefono = document.getElementById("telefono");
 const file = document.getElementById("customFile");
 const politica = document.getElementById("politica");
 const buttonSubmit = document.getElementById("boton");
+const punto_venta = document.getElementById("punto_venta");
+
 let archivo = [];
 let archivoFactura = [];
 
@@ -127,7 +129,7 @@ function validaciones() {
     $(".custom-file-label").addClass("selected").html("Choose File");
     return false;
   } else {
-    if (c_requerimiento.value == "Reclamo - Producto No Conforme") {
+    if (c_requerimiento.value == "Reclamo / Producto No Conforme") {
       /*Equipos del reclamo */
 
       if (equipos.value == "Selecciona una opción" || equipos.value == null) {
@@ -139,13 +141,14 @@ function validaciones() {
       }
       if (equipos.value != "Accesorios" && equipos.value != "Refacciones") {
         /* Serial del equipo */
-        if (serial.value == "" || serial.value == null) {
-          document.getElementById("headermensaje").style.background = "#ff3c37";
-          document.getElementById("titulomensaje").innerHTML = "ERROR";
-          document.getElementById("mensaje").innerHTML = "Escriba un serial";
-          $(".custom-file-label").addClass("selected").html("Choose File");
-          return false;
-        }
+
+        // if (serial.value == "" || serial.value == null) {
+        //   document.getElementById("headermensaje").style.background = "#ff3c37";
+        //   document.getElementById("titulomensaje").innerHTML = "ERROR";
+        //   document.getElementById("mensaje").innerHTML = "Escriba un serial";
+        //   $(".custom-file-label").addClass("selected").html("Choose File");
+        //   return false;
+        // }
       }
 
       /*Fecha de Compra del equipo */
@@ -155,6 +158,15 @@ function validaciones() {
         document.getElementById("titulomensaje").innerHTML = "ERROR";
         document.getElementById("mensaje").innerHTML =
           "seleccione una fecha de compra    ";
+        $(".custom-file-label").addClass("selected").html("Choose File");
+        return false;
+      }
+
+      if (punto_venta.value == "" || punto_venta.value == null) {
+        document.getElementById("headermensaje").style.background = "#ff3c37";
+        document.getElementById("titulomensaje").innerHTML = "ERROR";
+        document.getElementById("mensaje").innerHTML =
+          "ingrese el Almacén o punto de Venta donde adquirió el equipo";
         $(".custom-file-label").addClass("selected").html("Choose File");
         return false;
       }
@@ -194,13 +206,31 @@ function validaciones() {
 
 function ticketOnchange(sel) {
   divGarantia = document.getElementById("seccion_garantia");
-  if (sel.value == "Reclamo - Producto No Conforme") {
+  let info = "<span>" + sel.value + ": </span>"
+  descripcionCategoria = {
+    Petición:
+      "La petición es una solicitud para que se realicen algún tipo de acción o simplemente solicitar cierta información.",
+    Queja:
+      "Es la inconformidad sobre algún proceso administrativo o comercial, área de la organización o persona.",
+    Reclamo:
+      "Inconformidad ocasionado por fallas en el Producto o la mala prestación de un servicio.",
+    Solicitud:
+      "Propuesta o recomendación del cliente para mejorar el servicio o producto.",
+    Felicitación:
+      "Comunicación positiva frente a los productos y/o servicios ofrecidos, también por la atención brindada por un colaborador.",
+  };
+  if (sel.value == "Reclamo / Producto No Conforme") {
     divGarantia.style.display = "";
+    info += descripcionCategoria['Reclamo'];
+    document.getElementById("helpCategoria").innerHTML = info
+    
   } else {
     divGarantia.style.display = "none";
+    info += descripcionCategoria[sel.value];
+    document.getElementById("helpCategoria").innerHTML = info;
   }
+  document.getElementsByClassName("helpCategoria")[0].style.display = "";
 }
-
 function equipoOnchange(seleccion) {
   divSerial = document.getElementById("serialEquipo");
   if (seleccion.value == "Accesorios" || seleccion.value == "Refacciones") {
