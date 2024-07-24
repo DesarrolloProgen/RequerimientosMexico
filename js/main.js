@@ -80,11 +80,11 @@ window.addEventListener('load', function () {
 
     function enviarPeticion(settings) {
         fetch(url, settings)
-        .then(response => {
-            console.log(response);
+        .then(async response => {
+          let resp = await response.json();
             document.getElementById("headermensaje").style.background = '#6EF05F';
             document.getElementById('titulomensaje').innerHTML='Realizado';
-            document.getElementById('mensaje').innerHTML='Se realizó correctamente su registro.';  
+            document.getElementById('mensaje').innerHTML='Se realizó correctamente su registro. La PQRSF asignada a su solicitud es: ' + resp.registro;;  
             document.getElementById("formulario").reset();
             $(".custom-file-label").addClass("selected").html("Choose File");
             archivo = [];
