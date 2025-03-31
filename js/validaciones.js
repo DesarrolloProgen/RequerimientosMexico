@@ -57,7 +57,6 @@ function validaciones() {
   }
 
   /* Correo del Usuario */
-  console.log(validar_email(correo.value));
   if (
     correo.value == null ||
     correo.value == "" ||
@@ -161,8 +160,7 @@ function validaciones() {
         $(".custom-file-label").addClass("selected").html("Choose File");
         return false;
       }
-
-      if (punto_venta.value == "" || punto_venta.value == null) {
+      if ((punto_venta.value == "" || punto_venta.value == null) && (equipos.value != "Accesorios" && equipos.value != "Refacciones")) {
         document.getElementById("headermensaje").style.background = "#ff3c37";
         document.getElementById("titulomensaje").innerHTML = "ERROR";
         document.getElementById("mensaje").innerHTML =

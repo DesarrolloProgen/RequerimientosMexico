@@ -16,7 +16,6 @@ window.addEventListener('load', function () {
     /*-------------------------------------------------------------------------------------------- */
     form.addEventListener('submit', function (event) {
           event.preventDefault();
-          console.log(validaciones());
           if (!validaciones()) return false;
           if(c_requerimiento.value == "Reclamo / Producto No Conforme"){
             data = {
